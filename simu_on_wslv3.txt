@@ -1,0 +1,72 @@
+SimutransをWindows Subsystem for Linuxでコンパイルしてみる
+
+Windows 10の新機能として追加されたWindows Subsystem for Linux（以後WSL）。
+簡単に言えば、WindowsへLinux環境を構築するアプリである。
+詳細はMicroSoft公式や各種情報サイトを参考にして頂いて、WSLの準備からコンパイルまでを紹介する。
+WSLを用いて行う場合、クロスコンパイルとなる。
+なお、使用するパソコンのスペック及び導入するディストリビューションは下記の通り。
+	機種： Lenovo ThinkPad X250
+	OS : MicroSoft Windows 10 Pro
+	CPU : Intel Core i5-5200U @ 2.20GHz
+	HDD : 465GB
+	RAM : 8GB
+	WSLディストリビューション：Ubuntu
+なお、特記無き場合下記コマンドのバージョン番号は2018年8月10日時点での最新版のため、
+実行時には適宜最新版に読み替えて実行して頂きたい。
+
+
+[1]WSLのセットアップ
+初回利用時は、システム設定を変更するために管理者権限を有するアカウントでログインをする。
+スタートメニューを右クリックし「」を選択する。
+
+導入完了後は英語環境となる。日本語化する場合は次の手順で行う。
+(Japanese Teamサイト参考にパッケージリストの追加)
+パッケージ更新（update > upgrade）
+言語パックのインストール
+ロケールの変更>WSLの再起動
+タイムゾーン変更
+マニュアルのインストール
+詳細は、@ITの記事及びUbuntu Japanese Teamのサイトを参照願いたい。
+Ubuntuバージョンの確認方法は cat /etc/issuieで行える。
+
+[2]パッケージのセットアップ
+Qiitaの記事が詳しいが、Ubuntuで行うにはパッケージの導入に工夫が必要である。
+(1)aptでの導入
+Qiita記事で用いているArch Linuxでは、開発用パッケージをまとめたbase-develパッケージがあるが、
+Ubuntuでは現状そのようなセットは無いためbase-devel内の各パッケージを指定して導入する。
+Arch Linux公式にリストがあるためそこを参考にaptで導入する。
+なお、zlibやbzipはmingw用に編集して導入する必要があるためこの段階では導入しない。
+（表を挿入する）
+また、これとは別にgitなどのパッケージも導入する
+（コマンドを挿入）
+(2)zip系の導入
+/usr/local/srcへクロスコンパイル用に設定したzlib、bzip2を導入する。
+共通作業：srcディレクトリへ移動する
+	cd /usr/local/src
+1.zlib
+zlib公式サイトより最新版をダウンロードする。
+	sudo wget http://zlib.net/zlib-1.2.11.tar.gz
+解凍し、ディレクトリを移動する
+	sudo tar xvf zlib-1.2.11.tar.gz
+	cd zlib-1.2.11
+環境変数をクロスコンパイル用に設定してmakeを実行する。
+	PREFIXDIR=/usr/x86_64-w64-mingw32
+	sudo make -f win32/Makefile.gcc BINARY_PATH=$PREFIXDIR/bin INCLUDE_PATH=$PREFIXDIR/include LIBRARY_PATH=$PREFIXDIR/lib SHARED_MODE=1 PREFIX=x86_64-w64-mingw32- install
+2.bzip
+bzip公式サイトより最新版をダウンロードする。
+
+
+
+
+
+[参照記事]
+ Tech TIPS：WSLのUbuntu環境を日本語化する(@IT)
+	http://www.atmarkit.co.jp/ait/articles/1806/28/news043.html
+Tech TIPS：Windows 10でLinuxプログラムを利用可能にするWSL（Windows Subsystem for Linux）をインストールする（バージョン1803対応版）(@IT)
+	http://www.atmarkit.co.jp/ait/articles/1608/08/news039.html
+Ubuntuの日本語環境(Ubuntu Japanese Team)
+	http://www.ubuntulinux.jp/japanese
+Simutransをビルドしてみる(Qiita)
+	https://qiita.com/Aruneko/items/373ed7d135b6f686dbd9
+Arch Linux - base-devel(x86_64) - Group Details
+	https://www.archlinux.org/groups/x86_64/base-devel/
