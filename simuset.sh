@@ -33,7 +33,7 @@ sudo make -f win32/Makefile.gcc BINARY_PATH=$PREFIXDIR/bin INCLUDE_PATH=$PREFIXD
 # bzip2-1.0.6
 #====================================
 cd /usr/local/src
-sudo wget http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz
+sudo wget http://archive.ubuntu.com/ubuntu/pool/main/b/bzip2/bzip2_1.0.6.orig.tar.bz2
 sudo tar xvf bzip2-1.0.6.tar.gz
 cd bzip2-1.0.6
 # ここから下、絶対領域氏のパッチファイル内容とサイト内で紹介されていたコマンド
