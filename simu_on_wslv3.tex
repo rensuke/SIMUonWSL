@@ -1,5 +1,29 @@
 \documentclass[autodetect-engine,dvipdfmx-if-dvi,ja=standard,a4j]{bxjsarticle}
+	\title{SimutransをWindows Subsystem for Linuxでコンパイルする}
+	\author{廉(@osukoke)}
+	\date{\today}
 
 \begin{document}
+	\maketitle
+	\begin{abstract}
+		Windows 10より追加された機能、Windows Subsystem for Linux.
+		これにより、Windows上にLinux環境を構築することが容易になったと考えられる。
+		当文書はこの機能を用いてSimutransをコンパイルするまでの手順書を目指して作成している。
+	\end{abstract}
+	\section{最終目標と実行環境}
+		Windows 10の新機能として追加されたWindows Subsystem for Linux（以後WSL）。簡単に言えば、WindowsへLinux環境を構築するアプリである。\par \noindent
+		詳細はMicrosoft公式や各種情報サイトを参考にして頂いて、当文書ではWSLの準備からコンパイルまでを紹介する。\par
+		WSLを用いてWindows版Simutransを作成する場合、クロスコンパイルとなる。\par
+		記事内で使用しているパソコンのスペック及び導入するディストリビューションは下記の通り。\par\noindent
+			\begin{tabular}{rl}
+				WSLディストリビューション & : Ubuntu \\
+				機種 & : Lenovo ThinkPad X250 \\
+				OS & : MicroSoft Windows 10 Pro \\
+				CPU & : Intel Core i5-5200U @ 2.20GHz \\
+				RAM & : 8GB \\
+			\end{tabular}
+	\par
+		なお、特記無き場合下記コマンドのバージョン番号は2018年8月10日時点での最新版のため、実行時には適宜最新版に読み替えて実行して頂きたい。\par
+	\section{Windows Subsystem for Linuxのセットアップ}
 
 \end{document}
