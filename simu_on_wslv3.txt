@@ -48,8 +48,7 @@ Ubuntuバージョンの確認方法は cat /etc/issuieで行える。
 [2]パッケージのセットアップ
 Qiitaの記事が詳しいが、Ubuntuで行うにはパッケージの導入に工夫が必要である。
 (1)aptでの導入
-Qiita記事で用いているArch Linuxでは、開発用パッケージをまとめたbase-develパッケージがあるが、
-Ubuntuでは現状そのようなセットは無いためbase-devel内の各パッケージを指定して導入する。
+Qiita記事で用いているArch Linuxでは、開発用パッケージをまとめたbase-develパッケージがあるが、Ubuntuでは現状そのようなセットは無いためbase-devel内の各パッケージを指定して導入する。
 Arch Linux公式にリストがあるためそこを参考にaptで導入する。
 なお、zlibやbzipはmingw用に編集して導入する必要があるためこの段階では導入しない。
 （表を挿入する）
@@ -69,7 +68,21 @@ zlib公式サイトより最新版をダウンロードする。
 	PREFIXDIR=/usr/x86_64-w64-mingw32
 	sudo make -f win32/Makefile.gcc BINARY_PATH=$PREFIXDIR/bin INCLUDE_PATH=$PREFIXDIR/include LIBRARY_PATH=$PREFIXDIR/lib SHARED_MODE=1 PREFIX=x86_64-w64-mingw32- install
 2.bzip
-bzip公式サイトより最新版をダウンロードする。
+現在、公式サイトは期限切れにより不審サイト化しておりパッケージをダウンロードできない。
+そのため、Ubuntuのパッケージ検索サイトよりダウンロードする。
+	sudo wget http://archive.ubuntu.com/ubuntu/pool/main/b/bzip2/bzip2_1.0.6.orig.tar.bz2
+zlibと同様に解凍し、ディレクトリを移動する。コマンドは先述のzlibと同様のため省略。
+ただし、解凍後のディレクトリ名が異なるため、lsコマンドでディレクトリ一覧を取得し確認後に移動する。
+移動後、幾つかのファイル内容をクロスコンパイル用に編集する。
+bzip2.cは、sys\stat.hの\（逆スラッシュ）を/（スラッシュ）へ変える。
+Makefileは、変数設定をMingw系に変更する。
+これらのコマンドは下記の通りである。
+	sudo sed -i 's|sys\\stat.h|sys/stat.h|g' bzip2.c
+	sudo sed -i 's|CC=gcc|CC=x86_64-w64-mingw32-gcc|g' Makefile
+	sudo sed -i 's|AR=ar|AR=x86_64-w64-mingw32-ar|g' Makefile
+	sudo sed -i 's|RANLIB=ranlib|RANLIB=x86_64-w64-mingw32-ranlib|g' Makefile
+	sudo sed -i 's|PREFIX=/usr/local|PREFIX=/usr/x86_64-w64-mingw32|g' Makefile
+
 
 
 
@@ -86,3 +99,7 @@ Simutransをビルドしてみる(Qiita)
 	https://qiita.com/Aruneko/items/373ed7d135b6f686dbd9
 Arch Linux - base-devel(x86_64) - Group Details
 	https://www.archlinux.org/groups/x86_64/base-devel/
+絶対領域(AbsoluteArea)の徒然-Windows 64bit 用のffmpegをビルド-(絶対領域氏)
+	http://absolutearea.blogspot.jp/2012/09/windows-64bit-ffmpeg.html
+なんとな～くしあわせ？の日記-Debian Wheezy上でWindows-x64向けバイナリを作成する-(Hiroguki-Nagata氏)
+	http://nantonaku-shiawase.hatenablog.com/entry/2013/04/25/003059
