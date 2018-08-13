@@ -15,6 +15,7 @@
 		詳細はMicrosoft公式や各種情報サイトを参考にして頂いて、当文書ではWSLの準備からコンパイルまでを紹介する。\par
 		WSLを用いてWindows版Simutransを作成する場合、クロスコンパイルとなる。\par
 		記事内で使用しているパソコンのスペック及び導入するディストリビューションは下記の通り。\par\noindent
+		\begin{center}	
 			\begin{tabular}{rl}
 				WSLディストリビューション & : Ubuntu \\
 				機種 & : Lenovo ThinkPad X250 \\
@@ -22,8 +23,23 @@
 				CPU & : Intel Core i5-5200U @ 2.20GHz \\
 				RAM & : 8GB \\
 			\end{tabular}
+		\end{center}
 	\par
 		なお、特記無き場合下記コマンドのバージョン番号は2018年8月10日時点での最新版のため、実行時には適宜最新版に読み替えて実行して頂きたい。\par
 	\section{Windows Subsystem for Linuxのセットアップ}
-
+		\subsection{Windows機能のセット}
+			初回利用時は、システム設定を変更するために管理者権限を有するアカウントでログインをする。\par\noindent
+			スタートメニューを右クリックし「アプリと機能(F)」を選択する。\par
+			次に、関連設定の「プログラムと機能」をクリックし、コントロールパネルの「プログラムと機能」を呼び出し、プログラムと機能画面左の「Windowsの機能の有効化または無効化」をクリックする。\par\noindent
+			「Windows Subsystem for Linux」のチェックボックスをオンにしOKをクリックする。\par
+			設定変更が行われ、再起動を求められるため再起動する。
+		\subsection{Linuxのインストール}
+			Microsoft Storeを開き、検索窓へ「linux」と入力し検索ボタン(虫眼鏡)を押すと複数のディストリビューションが表示される。
+			今回はUbuntuを導入するため、Ubuntuをクリックし次の画面で「入手」をクリックする。するとインストールが始まる。\par
+			インストールが終了したらスタートメニューからUbuntuを探しクリック（またはストア画面から起動を押す）。
+			初回起動時はファイルの展開が行われるためしばらく待つ。\par\noindent
+			ファイルの展開が終了するとユーザ名を聞かれるため、Ubuntu用のユーザ名を入力する。このときWindowsとそろえる必要は無いが英数字で登録する。\par\noindent
+			ユーザ名を入力しEnterすればパスワードを聞かれる。パスワードは入力しても何も表示されない為注意。\par\noindent
+			再度パスワード入力して登録完了。\par
+			
 \end{document}
