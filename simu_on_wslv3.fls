@@ -163,7 +163,9 @@ INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/ipaex-type1/ipxm-r-u63.tfm
 INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/ipaex-type1/ipxm-r-u82.tfm
 INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/ipaex-type1/ipxm-r-u76.tfm
 INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/ipaex-type1/ipxm-r-u61.tfm
+INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/ipaex-type1/ipxm-r-u7f.tfm
 INPUT simu_on_wslv3.aux
+INPUT c:/texlive/2018/texmf-dist/fonts/enc/dvips/ipaex-type1/ipxt1-u7f.enc
 INPUT c:/texlive/2018/texmf-dist/fonts/enc/dvips/ipaex-type1/ipxt1-u61.enc
 INPUT c:/texlive/2018/texmf-dist/fonts/enc/dvips/ipaex-type1/ipxt1-u82.enc
 INPUT c:/texlive/2018/texmf-dist/fonts/enc/dvips/ipaex-type1/ipxt1-u79.enc
@@ -276,6 +278,7 @@ INPUT c:/texlive/2018/texmf-dist/fonts/type1/public/ipaex-type1/ipxm-r-u7a.pfb
 INPUT c:/texlive/2018/texmf-dist/fonts/type1/public/ipaex-type1/ipxm-r-u7b.pfb
 INPUT c:/texlive/2018/texmf-dist/fonts/type1/public/ipaex-type1/ipxm-r-u7c.pfb
 INPUT c:/texlive/2018/texmf-dist/fonts/type1/public/ipaex-type1/ipxm-r-u7d.pfb
+INPUT c:/texlive/2018/texmf-dist/fonts/type1/public/ipaex-type1/ipxm-r-u7f.pfb
 INPUT c:/texlive/2018/texmf-dist/fonts/type1/public/ipaex-type1/ipxm-r-u80.pfb
 INPUT c:/texlive/2018/texmf-dist/fonts/type1/public/ipaex-type1/ipxm-r-u82.pfb
 INPUT c:/texlive/2018/texmf-dist/fonts/type1/public/ipaex-type1/ipxm-r-u86.pfb
