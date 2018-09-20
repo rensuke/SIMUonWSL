@@ -7,13 +7,13 @@
 	\maketitle
 	\begin{abstract}
 		Windows 10より追加された機能、Windows Subsystem for Linux.
-		これにより、Windows上にLinux環境を構築することが容易になったと考えられる。
+		これがアプリとして公開されたことにより、Windows上にLinux環境を構築することが容易になったと考えられる。
 		当文書はこの機能を用いてSimutransをコンパイルするまでの手順書を目指して作成している。
 	\end{abstract}
 	\section{最終目標と実行環境}
 		Windows 10の新機能として追加されたWindows Subsystem for Linux（以後WSL）。簡単に言えば、WindowsへLinux環境を構築するアプリである。\par \noindent
 		詳細はMicrosoft公式や各種情報サイトを参考にして頂いて、当文書ではWSLの準備からコンパイルまでを紹介する。\par
-		WSLを用いてWindows版Simutransを作成する場合、クロスコンパイルとなる。\par
+		今回紹介する方法は、WSLを用いてWindows版Simutransを作成するクロスコンパイルとなる。Linux版などについては対象外としている。\par
 		記事内で使用しているパソコンのスペック及び導入するディストリビューションは下記の通り。\par\noindent
 		\begin{center}	
 			\begin{tabular}{rl}
@@ -45,8 +45,17 @@
 			が表示されればセットアップ完了である。\par
 			ディレクトリ（フォルダ）の位置について\par
 			～はユーザのホームディレクトリで、Windowsの C:￥Users￥hogeに相当する\par
-			ディレクトリを移動するとこの部分が変わる。最上位は/で表される。WindowsでいうCドライブに相当する。
-Windowsのディレクトリは、/mnt/c以下にリンクされている。
+			ディレクトリを移動するとこの部分が変わる。最上位は/で表される。WindowsでいうCドライブに相当する。\par
+			Windowsのディレクトリは、/mnt/c以下にリンクされている。\par
+			導入完了後は英語環境となっているため、日本語環境にする場合は下記の手順で行う。\par
+			(必要に応じ、Japanese Teamサイト参考にパッケージリストの追加)
+			パッケージ更新（apt update ののち apt upgrade）
+			言語パックのインストール
+			ロケールの変更>WSLの再起動
+			タイムゾーン変更
+			マニュアルのインストール
+			詳細は、@ITの記事及びUbuntu Japanese Teamのサイトを参照願いたい。なお、Ubuntuバージョンの確認方法は cat /etc/issuieで行える。\par
 
+			
 \end{document}
 
