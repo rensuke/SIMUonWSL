@@ -1,4 +1,5 @@
 \documentclass[autodetect-engine,dvipdfmx-if-dvi,ja=standard,a4j]{bxjsarticle}
+\usepackage {graphicx, xcolor}
 	\title{SimutransをWindows Subsystem for Linuxでコンパイルする}
 	\author{廉(@osukoke)}
 	\date{\today}
@@ -29,7 +30,7 @@
 	\section{Windows Subsystem for Linuxのセットアップ}
 		\subsection{Windows機能のセット}
 			初回利用時は、システム設定を変更するために管理者権限を有するアカウントでログインをする。\par\noindent
-			スタートメニューを右クリックし「アプリと機能(F)」を選択する。\par
+			スタートメニューを右クリックし「アプリと機能( \underline{F} )」を選択する。\par
 			次に、関連設定の「プログラムと機能」をクリックし、コントロールパネルの「プログラムと機能」を呼び出し、プログラムと機能画面左の「Windowsの機能の有効化または無効化」をクリックする。\par\noindent
 			「Windows Subsystem for Linux」のチェックボックスをオンにしOKをクリックする。\par
 			設定変更が行われ、再起動を求められるため再起動する。
@@ -41,14 +42,13 @@
 			ファイルの展開が終了するとユーザ名を聞かれるため、Ubuntu用のユーザ名を入力する。このときWindowsとそろえる必要は無いが英数字で登録する。\par\noindent
 			ユーザ名を入力しEnterすればパスワードを聞かれる。パスワードは入力しても何も表示されない為注意。\par\noindent
 			再度パスワード入力して登録完了。\par
-			(ユーザ名)@(端末名):~\par
+			{\color[rgb]{green}(ユーザ名)@(端末名)}\par
 			が表示されればセットアップ完了である。\par
 			ディレクトリ（フォルダ）の位置について\par
-			～はユーザのホームディレクトリで、Windowsの C:￥Users￥hogeに相当する\par
+			～（チルダ）はユーザのホームディレクトリで、Windowsの C:￥Users￥hogeに相当する\par
 			ディレクトリを移動するとこの部分が変わる。最上位は/で表される。WindowsでいうCドライブに相当する。\par
 			Windowsのディレクトリは、/mnt/c以下にリンクされている。\par
-			導入完了後は英語環境となっているため、日本語環境にする場合は下記の手順で行う。\par
-			(必要に応じ、Japanese Teamサイト参考にパッケージリストの追加)
+			導入完了後は英語環境となっているため、日本語環境にする場合は下記の手順で行う。(必要に応じ、Japanese Teamサイト参考にパッケージリストの追加)\par
 			パッケージ更新（apt update ののち apt upgrade）
 			言語パックのインストール
 			ロケールの変更>WSLの再起動
@@ -77,7 +77,7 @@
 							cd zlib-1.2.11
 						環境変数をクロスコンパイル用に設定してmakeを実行する。
 							PREFIXDIR=/usr/x86_64-w64-mingw32
-							sudo make -f win32/Makefile.gcc BINARY_PATH=$PREFIXDIR/bin INCLUDE_PATH=$PREFIXDIR/include LIBRARY_PATH=$PREFIXDIR/lib SHARED_MODE=1 PREFIX=x86_64-w64-mingw32- install \par
+							sudo make -f win32/Makefile.gcc BINARY_PATH=$PREFIXDIR/bin INCLUDE_PATH=$PREFIXDIR/include LIBRARY_PATH=$PREFIXDIR/lib SHARED_MODE=1 PREFIX=x86_64-w64-mingw32- install
 					2.bzip
 						現在、公式サイトは期限切れにより不審サイト化しておりパッケージをダウンロードできない。
 						そのため、Ubuntuのパッケージ検索サイトよりダウンロードする。
